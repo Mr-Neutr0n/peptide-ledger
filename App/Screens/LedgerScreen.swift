@@ -9,6 +9,7 @@ struct LedgerScreen: View {
             List(appState.events.reversed()) { event in
                 VStack(alignment: .leading, spacing: 4) {
                     Text(event.kind.rawValue).font(.headline)
+                        .accessibilityIdentifier("ledger.row.\(event.kind.rawValue)")
                     Text(event.occurredAt.formatted(date: .abbreviated, time: .shortened))
                         .font(.caption)
                         .foregroundStyle(Palette.muted)
@@ -20,6 +21,7 @@ struct LedgerScreen: View {
                     }
                 }
             }
+            .accessibilityIdentifier("ledger.list")
             .navigationTitle("Ledger")
             .overlay {
                 if appState.events.isEmpty {

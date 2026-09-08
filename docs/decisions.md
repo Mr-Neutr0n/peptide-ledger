@@ -18,11 +18,25 @@ project is reviewable in git without merging a 4k-line pbxproj by hand.
 Tuist is the better large-team tool (Swift manifests, cache). This repo
 is one app and five libraries. XcodeGen 2.46 is enough. Recorded 8 Sep 2026.
 
-## Swift Testing for packages; XCTest only if we add UI tests
+## Swift Testing for packages; XCTest for the UI smoke test
 
 Swift Testing is the 2026 default for unit tests (`@Test`, `#expect`).
-XCTest remains required for UI tests. v0 has no UI test target. Recorded
-8 Sep 2026.
+XCTest remains required for UI tests, so `PeptideLedgerUITests` is XCTest.
+Recorded 8 Sep 2026.
+
+## `--ui-test-mock` is a Debug-only seam, not a feature flag
+
+The UI test needs a deterministic provider and must not touch Keychain or
+the real ledger. `AppState` reads the launch argument only under `#if
+DEBUG`, swaps in `MockProvider` with the R01 fixture answer, uses a
+temporary ledger directory, and skips the lock screen because
+LocalAuthentication is system UI that XCUITest cannot drive. Release
+builds ignore the argument. Recorded 8 Sep 2026.
+
+## Filing rows never depends on the model provider
+
+`Clerk.commit` is static. A cleared or invalid API key must not block
+confirming rows that were already proposed. Recorded 8 Sep 2026.
 
 ## Public GitHub repo for the app, private repo for the site
 
@@ -50,8 +64,9 @@ name. Recorded 8 Sep 2026.
 Session trees can grow. pi-style compaction is a hook with a message, not
 an implementation. Ledger events are never compacted. Recorded 8 Sep 2026.
 
-## Simulator runtime may be missing on this laptop
+## `verify` adapts to whether a simulator runtime exists
 
-The SDK `iphonesimulator26.5` is installed. `simctl list runtimes` was
-empty on the build machine, so `verify` uses a generic iOS Simulator
-destination when no iPhone device exists. Recorded 8 Sep 2026.
+With an iPhone runtime installed, `verify` builds and runs the UI smoke
+test on it. Without one (fresh CI image, laptop before the 8.5 GB
+download), it builds the app against the simulator SDK only and says so.
+Both paths fail on the first broken stage. Recorded 8 Sep 2026.

@@ -26,9 +26,9 @@ xcodegen generate
 echo "OK xcodegen"
 
 stage "xcodebuild (iphonesimulator SDK)"
-# Prefer a named simulator when a runtime exists. Otherwise build the
-# iOS target against the simulator SDK without a destination (this laptop
-# has the SDK but no installed runtime).
+# When an iPhone runtime is installed, build and run the UI smoke test on it
+# (unlock, disclaimer, capture, confirm, ledger, against a canned provider).
+# Otherwise build the iOS target against the simulator SDK without a destination.
 if available_iphone="$(xcrun simctl list devices available 2>/dev/null | awk '/iPhone/{gsub(/^[[:space:]]+/, ""); sub(/ \(.*$/, ""); print; exit}')" && [[ -n "${available_iphone:-}" ]]; then
   echo "Using simulator: ${available_iphone}"
   xcodebuild \
@@ -37,7 +37,10 @@ if available_iphone="$(xcrun simctl list devices available 2>/dev/null | awk '/i
     -destination "platform=iOS Simulator,name=${available_iphone}" \
     -configuration Debug \
     CODE_SIGNING_ALLOWED=NO \
-    build
+    -only-testing:PeptideLedgerUITests \
+    test | tee /tmp/peptide-ledger-uitest.log | grep -E 'Test Case|Test Suite|error:|\*\* TEST|passed|failed' || true
+  grep -q '\*\* TEST SUCCEEDED \*\*' /tmp/peptide-ledger-uitest.log
+  echo "OK ui smoke test"
 else
   echo "No iPhone simulator runtime. Building -target PeptideLedger -sdk iphonesimulator."
   xcodebuild \

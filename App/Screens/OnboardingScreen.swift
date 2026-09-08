@@ -15,6 +15,7 @@ struct OnboardingScreen: View {
                     Text("It records doses, vials, reconstitutions, symptoms, and weights that you already decided. It does not recommend a dose, compound, protocol, or vendor. It is not a medical device. You must be 17 or older.")
                     Text("Storage is on this phone. The only network call is the model provider you choose, using a key you paste. There is no company server.")
                     Toggle("I am 17 or older and I understand this app does not give medical advice.", isOn: $accepted)
+                        .accessibilityIdentifier("onboarding.accept")
                     Picker("Provider", selection: Bindable(appState).providerKind) {
                         Text("Anthropic").tag(ProviderKind.anthropic)
                         Text("OpenAI-compatible").tag(ProviderKind.openaiCompatible)
@@ -32,6 +33,7 @@ struct OnboardingScreen: View {
                     }
                     .disabled(!accepted)
                     .buttonStyle(.borderedProminent)
+                    .accessibilityIdentifier("onboarding.continue")
                 }
                 .padding()
             }

@@ -38,10 +38,27 @@ final class AppState {
     private let keychain = KeychainStore(service: "dev.neutr0n.peptideledger")
     private let defaults = UserDefaults.standard
 
+    /// Debug-only seam for the UI smoke test: canned proposals, a throwaway ledger, no Keychain, no network.
+    let uiTestMock: Bool
+
     init() {
+        #if DEBUG
+        uiTestMock = CommandLine.arguments.contains("--ui-test-mock")
+        #else
+        uiTestMock = false
+        #endif
         let appSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
             ?? FileManager.default.temporaryDirectory
-        directory = appSupport.appendingPathComponent("peptide-ledger", isDirectory: true)
+        if uiTestMock {
+            directory = FileManager.default.temporaryDirectory
+                .appendingPathComponent("peptide-ledger-uitest-\(UUID().uuidString)", isDirectory: true)
+            UserDefaults.standard.removeObject(forKey: "onboardingComplete")
+            UserDefaults.standard.removeObject(forKey: "disclaimerAccepted")
+            // LocalAuthentication is system UI that XCUITest cannot drive.
+            unlocked = true
+        } else {
+            directory = appSupport.appendingPathComponent("peptide-ledger", isDirectory: true)
+        }
         onboardingComplete = UserDefaults.standard.bool(forKey: "onboardingComplete")
         disclaimerAccepted = UserDefaults.standard.bool(forKey: "disclaimerAccepted")
         providerKind = ProviderKind(rawValue: UserDefaults.standard.string(forKey: "providerKind") ?? "") ?? .anthropic
@@ -56,7 +73,7 @@ final class AppState {
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
             store = try EventStore(directory: directory)
             sessions = try SessionStore(directory: directory)
-            hasKey = (try? keychain.read(account: accountName))?.isEmpty == false
+            hasKey = uiTestMock || (try? keychain.read(account: accountName))?.isEmpty == false
             await refresh()
         } catch {
             errorMessage = error.localizedDescription
@@ -85,6 +102,10 @@ final class AppState {
     }
 
     func saveKey(_ key: String) throws {
+        if uiTestMock {
+            hasKey = true
+            return
+        }
         try keychain.set(key, account: accountName)
         hasKey = !key.isEmpty
     }
@@ -95,6 +116,9 @@ final class AppState {
     }
 
     func makeProvider() throws -> any ModelProvider {
+        if uiTestMock {
+            return MockProvider(defaultResponse: Self.uiTestProposalJSON)
+        }
         let key = try keychain.read(account: accountName) ?? ""
         if key.isEmpty { throw ModelClientError.emptyKey }
         let url = URL(string: baseURLString) ?? URL(string: "https://api.openai.com/v1")!
@@ -176,6 +200,11 @@ final class AppState {
     func csvText() async -> String {
         LedgerExport.csv(from: events)
     }
+
+    /// Mirrors eval/rambles.json R01 so the smoke test and the eval fixtures agree.
+    static let uiTestProposalJSON = """
+    {"events":[{"kind":"doseLogged","excerpt":"250 micrograms of BPC in the left abdomen","payload":{"compoundName":"BPC-157","doseMass":{"value":250,"unit":"mcg"},"site":"left abdomen"}}],"gaps":["which of the BPC vials, mix date not confirmed"]}
+    """
 
     func deleteEverything() async throws {
         try await store?.deleteEverything()

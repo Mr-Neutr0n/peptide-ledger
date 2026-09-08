@@ -45,13 +45,33 @@ targets:
         DEAD_CODE_STRIPPING: YES
         SUPPORTS_MACCATALYST: NO
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.healthcare-fitness
+  PeptideLedgerUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: UITests
+    dependencies:
+      - target: PeptideLedger
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.neutr0n.peptideledger.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_VERSION: "6.0"
+        TEST_TARGET_NAME: PeptideLedger
+        CODE_SIGN_STYLE: Automatic
 schemes:
   PeptideLedger:
     build:
       targets:
         PeptideLedger: all
+        PeptideLedgerUITests: [test]
     run:
       config: Debug
+    test:
+      config: Debug
+      targets:
+        - PeptideLedgerUITests
     profile:
       config: Release
     analyze:

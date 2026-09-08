@@ -86,6 +86,15 @@ open PeptideLedger.xcodeproj
 Select the `PeptideLedger` scheme and an iPhone destination. Paste a
 model API key in onboarding. Do not commit keys.
 
+`./verify` runs `swift build`, `swift test` (31 tests), XcodeGen, and
+then, if an iPhone simulator runtime is installed, the XCUITest smoke test
+in `UITests/` on a booted simulator: onboarding gate, typed ramble,
+proposal card with gap list, confirm, row in the Ledger tab. It uses a
+canned provider (`--ui-test-mock`, Debug builds only) so no key and no
+network are needed. Without a runtime it builds the app against the
+simulator SDK and says so. Install a runtime with
+`xcodebuild -downloadPlatform iOS` (about 8.5 GB).
+
 Eval fixtures (no network): `swift test --filter EvalTests`. Live key
 instructions are in `eval/README.md`.
 

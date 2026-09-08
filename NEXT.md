@@ -10,17 +10,23 @@ file.
 - iOS shell: lock, onboarding, capture, ledger, vials, reconstitution
   tool, export, settings.
 - Eval: 25 rambles, 10 synthetic label texts, mock-provider tests.
+- UI smoke test `UITests/CaptureFlowUITests.swift` runs on a booted iPhone
+  17 Pro (iOS 26.5 runtime installed 8 Sep 2026): onboarding gate,
+  ramble, proposal card with gap list, confirm, row visible in Ledger.
+  It launches the app with `--ui-test-mock` (Debug only): canned
+  `MockProvider` answer matching eval fixture R01, throwaway ledger dir,
+  Keychain skipped, lock skipped because LocalAuthentication is system UI.
+- `./verify` runs that UI test when an iPhone runtime exists, otherwise
+  falls back to an SDK-only build. Last full run: 31 unit tests, UI test
+  passed in 20 s, `verify passed`.
 - Docs listed in the README are real files, not stubs.
 
 ## Known gaps
 
-- This laptop had iOS Simulator SDK 26.5 but no installed simulator
-  runtime (`xcrun simctl list runtimes` was empty). `./verify` therefore
-  runs `xcodebuild -target PeptideLedger -sdk iphonesimulator -arch arm64`
-  which compiles and links the app (`BUILD SUCCEEDED`) without booting a
-  simulator. Install an iPhone 17 runtime to run the UI. A full
-  `xcodebuild -downloadPlatform iOS` is an 8.5 GB fetch; it was started
-  and then stopped once the SDK build passed.
+- Only one UI test. Vials, Tools, Export, and Settings screens compile
+  and render but have no automated drive-through yet.
+- Speech dictation and Vision OCR are not exercised by the UI test (no
+  mic or photo library in the mock path). Needs a real device pass.
 - Session JSONL date encoding is ISO-8601 on write; older default-encoded
   lines still decode.
 - Photo bytes are OCR'd; attaching the image file to a vial row is a

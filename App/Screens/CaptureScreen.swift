@@ -10,6 +10,7 @@ struct CaptureScreen: View {
     @State private var listening = false
     @State private var accepted: Set<Int> = []
     @State private var pickerItem: PhotosPickerItem?
+    @FocusState private var rambleFocused: Bool
 
     var body: some View {
         NavigationStack {
@@ -20,6 +21,8 @@ struct CaptureScreen: View {
                     TextField("What happened", text: Bindable(appState).ramble, axis: .vertical)
                         .lineLimit(4...12)
                         .textFieldStyle(.roundedBorder)
+                        .focused($rambleFocused)
+                        .accessibilityIdentifier("capture.ramble")
                     HStack {
                         Button(listening ? "Stop mic" : "Mic") {
                             if listening {
@@ -35,10 +38,12 @@ struct CaptureScreen: View {
                             Label("Vial photo", systemImage: "camera")
                         }
                         Button("Propose") {
+                            rambleFocused = false
                             Task { await appState.propose() }
                         }
                         .disabled(appState.ramble.isEmpty || appState.isProposing)
                         .buttonStyle(.borderedProminent)
+                        .accessibilityIdentifier("capture.propose")
                     }
                     if !appState.ocrText.isEmpty {
                         Text("OCR (not filed): \(appState.ocrText)")
@@ -58,8 +63,16 @@ struct CaptureScreen: View {
                 }
                 .padding()
             }
+            .scrollDismissesKeyboard(.immediately)
             .background(Palette.paper)
             .navigationTitle("Capture")
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") { rambleFocused = false }
+                        .accessibilityIdentifier("capture.keyboardDone")
+                }
+            }
             .onChange(of: pickerItem) { _, item in
                 Task { await ingest(item) }
             }
@@ -111,6 +124,7 @@ struct ProposalCard: View {
             }
             Button("File accepted rows", action: onCommit)
                 .buttonStyle(.borderedProminent)
+                .accessibilityIdentifier("capture.commit")
         }
         .padding()
         .background(Color.white.opacity(0.7))
