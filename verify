@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+set -euo pipefail
+root="$(cd "$(dirname "$0")" && pwd)"
+cd "$root"
+
+stage() {
+  echo
+  echo "==> $1"
+}
+
+stage "swift build"
+swift build
+echo "OK swift build"
+
+stage "swift test"
+swift test
+echo "OK swift test"
+
+if ! command -v xcodegen >/dev/null 2>&1; then
+  echo "xcodegen is required for the iOS target. brew install xcodegen" >&2
+  exit 1
+fi
+
+stage "xcodegen generate"
+xcodegen generate
+echo "OK xcodegen"
+
+stage "xcodebuild (iphonesimulator SDK)"
+# Prefer a named simulator when a runtime exists. Otherwise build the
+# iOS target against the simulator SDK without a destination (this laptop
+# has the SDK but no installed runtime).
+if available_iphone="$(xcrun simctl list devices available 2>/dev/null | awk '/iPhone/{gsub(/^[[:space:]]+/, ""); sub(/ \(.*$/, ""); print; exit}')" && [[ -n "${available_iphone:-}" ]]; then
+  echo "Using simulator: ${available_iphone}"
+  xcodebuild \
+    -project PeptideLedger.xcodeproj \
+    -scheme PeptideLedger \
+    -destination "platform=iOS Simulator,name=${available_iphone}" \
+    -configuration Debug \
+    CODE_SIGNING_ALLOWED=NO \
+    build
+else
+  echo "No iPhone simulator runtime. Building -target PeptideLedger -sdk iphonesimulator."
+  xcodebuild \
+    -project PeptideLedger.xcodeproj \
+    -target PeptideLedger \
+    -sdk iphonesimulator \
+    -arch arm64 \
+    -configuration Debug \
+    CODE_SIGNING_ALLOWED=NO \
+    build
+fi
+echo "OK xcodebuild"
+
+echo
+echo "verify passed"

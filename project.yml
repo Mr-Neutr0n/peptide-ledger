@@ -1,0 +1,60 @@
+name: PeptideLedger
+options:
+  bundleIdPrefix: dev.neutr0n
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: false
+packages:
+  PeptideLedger:
+    path: .
+targets:
+  PeptideLedger:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: App
+        excludes:
+          - "**/.DS_Store"
+    dependencies:
+      - package: PeptideLedger
+        product: LedgerCore
+      - package: PeptideLedger
+        product: DoseMath
+      - package: PeptideLedger
+        product: ModelClient
+      - package: PeptideLedger
+        product: Clerk
+      - package: PeptideLedger
+        product: LabelOCR
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.neutr0n.peptideledger
+        PRODUCT_NAME: PeptideLedger
+        INFOPLIST_FILE: App/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        SWIFT_VERSION: "6.0"
+        SWIFT_STRICT_CONCURRENCY: complete
+        TARGETED_DEVICE_FAMILY: "1"
+        IPHONEOS_DEPLOYMENT_TARGET: "18.0"
+        CURRENT_PROJECT_VERSION: 1
+        MARKETING_VERSION: 0.1.0
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_USER_SCRIPT_SANDBOXING: YES
+        DEAD_CODE_STRIPPING: YES
+        SUPPORTS_MACCATALYST: NO
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.healthcare-fitness
+schemes:
+  PeptideLedger:
+    build:
+      targets:
+        PeptideLedger: all
+    run:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
