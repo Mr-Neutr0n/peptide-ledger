@@ -19,10 +19,10 @@ struct ClerkTests {
         #expect(proposal.events.count == 1)
         #expect(proposal.gaps.contains("which vial"))
         #expect(await store.allEvents().isEmpty)
-        let committed = try await clerk.commit(proposal: proposal, accepted: IndexSet(integer: 0), store: store)
+        let committed = try await Clerk.commit(proposal: proposal, accepted: IndexSet(integer: 0), store: store)
         #expect(committed.count == 1)
         #expect(await store.allEvents().count == 1)
-        let none = try await clerk.commit(proposal: proposal, accepted: IndexSet(), store: store)
+        let none = try await Clerk.commit(proposal: proposal, accepted: IndexSet(), store: store)
         #expect(none.isEmpty)
         #expect(await store.allEvents().count == 1)
     }

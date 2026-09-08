@@ -33,7 +33,8 @@ public struct Clerk: Sendable {
         return try ProposalParser.parse(raw)
     }
 
-    public func commit(
+    /// Filing never touches the model provider, so it is static: a cleared key must not block a confirm.
+    public static func commit(
         proposal: Proposal,
         accepted: IndexSet,
         store: EventStore,

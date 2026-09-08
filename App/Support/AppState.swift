@@ -128,8 +128,7 @@ final class AppState {
     func confirm(accepted: IndexSet) async {
         guard let proposal, let store else { return }
         do {
-            let clerk = Clerk(provider: try makeProvider())
-            _ = try await clerk.commit(proposal: proposal, accepted: accepted, store: store)
+            _ = try await Clerk.commit(proposal: proposal, accepted: accepted, store: store)
             self.proposal = nil
             ramble = ""
             ocrText = ""
