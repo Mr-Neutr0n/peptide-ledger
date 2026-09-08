@@ -1,0 +1,9 @@
+Peptide Ledger
+Copyright 2026 Harikrishna Pillai
+
+This product is a local-first iOS ledger. It is not a medical device and
+is not affiliated with Pep, Shotsy, Glapp, MeAgain, or any pharmacy.
+
+The architecture notes cite public Apple documentation, WWDC sessions,
+and the Familiar project (IsaacHuo/Familiar, MIT) as a reference for
+BYOK iPhone agents. Familiar's source is not redistributed here.
