@@ -1,0 +1,744 @@
+[
+  {
+    "id": "R01",
+    "ramble": "uh yeah just did 250 micrograms of BPC in the left abdomen, the 5 milligram vial I mixed yesterday with 2 mil of bac",
+    "expected_kinds": [
+      "doseLogged"
+    ],
+    "expected_compounds": [
+      "BPC-157"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "doseLogged",
+          "excerpt": "250 micrograms of BPC in the left abdomen",
+          "payload": {
+            "compoundName": "BPC-157",
+            "doseMass": {
+              "value": 250,
+              "unit": "mcg"
+            },
+            "site": "left abdomen"
+          }
+        }
+      ],
+      "gaps": [
+        "which of the BPC vials, mix date not confirmed"
+      ]
+    }
+  },
+  {
+    "id": "R02",
+    "ramble": "new vial arrived TB-500 10 mg lot T9X fridge",
+    "expected_kinds": [
+      "vialAdded"
+    ],
+    "expected_compounds": [
+      "TB-500"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "vialAdded",
+          "excerpt": "TB-500 10 mg lot T9X fridge",
+          "payload": {
+            "compoundName": "TB-500",
+            "labeledMass": {
+              "value": 10,
+              "unit": "mg"
+            },
+            "lot": "T9X",
+            "storageNote": "fridge"
+          }
+        }
+      ],
+      "gaps": []
+    }
+  },
+  {
+    "id": "R03",
+    "ramble": "mixed the tirzepatide 10 mg with 1 milliliter bac water just now",
+    "expected_kinds": [
+      "vialReconstituted"
+    ],
+    "expected_compounds": [
+      "tirzepatide"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "vialReconstituted",
+          "excerpt": "mixed the tirzepatide 10 mg with 1 milliliter bac water",
+          "payload": {
+            "compoundName": "tirzepatide",
+            "diluentVolume": {
+              "milliliters": 1
+            },
+            "diluentName": "BAC",
+            "labeledMass": {
+              "value": 10,
+              "unit": "mg"
+            }
+          }
+        }
+      ],
+      "gaps": [
+        "vial id unknown"
+      ]
+    }
+  },
+  {
+    "id": "R04",
+    "ramble": "weight this morning 198 pounds",
+    "expected_kinds": [
+      "weightLogged"
+    ],
+    "expected_compounds": [],
+    "proposal": {
+      "events": [
+        {
+          "kind": "weightLogged",
+          "excerpt": "198 pounds",
+          "payload": {
+            "pounds": 198
+          }
+        }
+      ],
+      "gaps": []
+    }
+  },
+  {
+    "id": "R05",
+    "ramble": "pretty nauseous after last night's shot, like a 6 out of 10, lasted two hours",
+    "expected_kinds": [
+      "symptomLogged"
+    ],
+    "expected_compounds": [],
+    "proposal": {
+      "events": [
+        {
+          "kind": "symptomLogged",
+          "excerpt": "pretty nauseous ... 6 out of 10",
+          "payload": {
+            "text": "nausea after last night's shot, lasted two hours",
+            "severity": "6/10"
+          }
+        }
+      ],
+      "gaps": [
+        "which compound caused it"
+      ]
+    }
+  },
+  {
+    "id": "R06",
+    "ramble": "threw out the old semaglutide vial it was cloudy",
+    "expected_kinds": [
+      "vialDiscarded"
+    ],
+    "expected_compounds": [
+      "semaglutide"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "vialDiscarded",
+          "excerpt": "threw out the old semaglutide vial it was cloudy",
+          "payload": {
+            "reason": "cloudy",
+            "compoundName": "semaglutide"
+          }
+        }
+      ],
+      "gaps": [
+        "vial id"
+      ]
+    }
+  },
+  {
+    "id": "R07",
+    "ramble": "CJC 100 mcg and ipamorelin 100 mcg right before bed, left deltoid",
+    "expected_kinds": [
+      "doseLogged",
+      "doseLogged"
+    ],
+    "expected_compounds": [
+      "CJC-1295",
+      "Ipamorelin"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "doseLogged",
+          "excerpt": "CJC 100 mcg",
+          "payload": {
+            "compoundName": "CJC-1295",
+            "doseMass": {
+              "value": 100,
+              "unit": "mcg"
+            },
+            "site": "left deltoid"
+          }
+        },
+        {
+          "kind": "doseLogged",
+          "excerpt": "ipamorelin 100 mcg",
+          "payload": {
+            "compoundName": "Ipamorelin",
+            "doseMass": {
+              "value": 100,
+              "unit": "mcg"
+            },
+            "site": "left deltoid"
+          }
+        }
+      ],
+      "gaps": [
+        "same syringe blend or two draws"
+      ]
+    }
+  },
+  {
+    "id": "R08",
+    "ramble": "notes to self: pharmacy said keep the reconstituted one 28 days fridge, that is what they told me not a protocol",
+    "expected_kinds": [
+      "noteAdded"
+    ],
+    "expected_compounds": [],
+    "proposal": {
+      "events": [
+        {
+          "kind": "noteAdded",
+          "excerpt": "keep the reconstituted one 28 days fridge",
+          "payload": {
+            "text": "pharmacy said keep reconstituted vial 28 days fridge"
+          }
+        }
+      ],
+      "gaps": [
+        "which vial"
+      ]
+    }
+  },
+  {
+    "id": "R09",
+    "ramble": "wait I logged yesterday's BPC as 250 but it was 500 mcg, left abdomen was right though",
+    "expected_kinds": [
+      "doseLogged"
+    ],
+    "expected_compounds": [
+      "BPC-157"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "doseLogged",
+          "excerpt": "it was 500 mcg",
+          "payload": {
+            "compoundName": "BPC-157",
+            "doseMass": {
+              "value": 500,
+              "unit": "mcg"
+            },
+            "site": "left abdomen",
+            "notes": "correction of prior 250 mcg log"
+          }
+        }
+      ],
+      "gaps": [
+        "id of the row to supersede"
+      ]
+    }
+  },
+  {
+    "id": "R10",
+    "ramble": "GHK-Cu 50 milligrams mixed with 5 mil, drew 0.2 mil into the right hip this morning",
+    "expected_kinds": [
+      "vialReconstituted",
+      "doseLogged"
+    ],
+    "expected_compounds": [
+      "GHK-Cu",
+      "GHK-Cu"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "vialReconstituted",
+          "excerpt": "GHK-Cu 50 milligrams mixed with 5 mil",
+          "payload": {
+            "compoundName": "GHK-Cu",
+            "diluentVolume": {
+              "milliliters": 5
+            },
+            "labeledMass": {
+              "value": 50,
+              "unit": "mg"
+            }
+          }
+        },
+        {
+          "kind": "doseLogged",
+          "excerpt": "drew 0.2 mil into the right hip",
+          "payload": {
+            "compoundName": "GHK-Cu",
+            "drawVolume": {
+              "milliliters": 0.2
+            },
+            "site": "right hip"
+          }
+        }
+      ],
+      "gaps": [
+        "dose mass not stated, only draw volume"
+      ]
+    }
+  },
+  {
+    "id": "R11",
+    "ramble": "testosterone cyp 0.3 mil right glute, vial says 200 milligrams per mil I am not converting IU",
+    "expected_kinds": [
+      "doseLogged"
+    ],
+    "expected_compounds": [
+      "testosterone cypionate"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "doseLogged",
+          "excerpt": "testosterone cyp 0.3 mil right glute",
+          "payload": {
+            "compoundName": "testosterone cypionate",
+            "drawVolume": {
+              "milliliters": 0.3
+            },
+            "site": "right glute",
+            "notes": "label 200 mg/mL, IU not used"
+          }
+        }
+      ],
+      "gaps": [
+        "dose mass not explicitly spoken"
+      ]
+    }
+  },
+  {
+    "id": "R12",
+    "ramble": "what dose of semaglutide should I take this week",
+    "expected_kinds": [],
+    "expected_compounds": [],
+    "proposal": {
+      "events": [],
+      "gaps": [
+        "user asked for a dose recommendation; clerk refuses to prescribe"
+      ]
+    }
+  },
+  {
+    "id": "R13",
+    "ramble": "compounded sema 2.5 mg from the 5 mg vial, stomach left of navel, Sunday night",
+    "expected_kinds": [
+      "doseLogged"
+    ],
+    "expected_compounds": [
+      "semaglutide"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "doseLogged",
+          "excerpt": "compounded sema 2.5 mg ... stomach left of navel",
+          "payload": {
+            "compoundName": "semaglutide",
+            "doseMass": {
+              "value": 2.5,
+              "unit": "mg"
+            },
+            "site": "left of navel"
+          }
+        }
+      ],
+      "gaps": [
+        "time of day not exact"
+      ]
+    }
+  },
+  {
+    "id": "R14",
+    "ramble": "new BPC 5mg and a TB 10mg both lots on the corks, fridge door",
+    "expected_kinds": [
+      "vialAdded",
+      "vialAdded"
+    ],
+    "expected_compounds": [
+      "BPC-157",
+      "TB-500"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "vialAdded",
+          "excerpt": "new BPC 5mg",
+          "payload": {
+            "compoundName": "BPC-157",
+            "labeledMass": {
+              "value": 5,
+              "unit": "mg"
+            },
+            "storageNote": "fridge door"
+          }
+        },
+        {
+          "kind": "vialAdded",
+          "excerpt": "TB 10mg",
+          "payload": {
+            "compoundName": "TB-500",
+            "labeledMass": {
+              "value": 10,
+              "unit": "mg"
+            },
+            "storageNote": "fridge door"
+          }
+        }
+      ],
+      "gaps": [
+        "lots mentioned but not read aloud"
+      ]
+    }
+  },
+  {
+    "id": "R15",
+    "ramble": "site rotation: used right thigh last time so this BPC 250 mcg goes left thigh",
+    "expected_kinds": [
+      "doseLogged"
+    ],
+    "expected_compounds": [
+      "BPC-157"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "doseLogged",
+          "excerpt": "BPC 250 mcg goes left thigh",
+          "payload": {
+            "compoundName": "BPC-157",
+            "doseMass": {
+              "value": 250,
+              "unit": "mcg"
+            },
+            "site": "left thigh"
+          }
+        }
+      ],
+      "gaps": []
+    }
+  },
+  {
+    "id": "R16",
+    "ramble": "I reconstituted the 5 mg BPC with 2 mL, I want 250 mcg, do not calculate it for me in words just file the mix and the intended dose after I confirm",
+    "expected_kinds": [
+      "vialReconstituted",
+      "doseLogged"
+    ],
+    "expected_compounds": [
+      "BPC-157",
+      "BPC-157"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "vialReconstituted",
+          "excerpt": "reconstituted the 5 mg BPC with 2 mL",
+          "payload": {
+            "compoundName": "BPC-157",
+            "diluentVolume": {
+              "milliliters": 2
+            },
+            "labeledMass": {
+              "value": 5,
+              "unit": "mg"
+            }
+          }
+        },
+        {
+          "kind": "doseLogged",
+          "excerpt": "intended dose 250 mcg",
+          "payload": {
+            "compoundName": "BPC-157",
+            "doseMass": {
+              "value": 250,
+              "unit": "mcg"
+            },
+            "notes": "user asked math to stay in DoseMath"
+          }
+        }
+      ],
+      "gaps": [
+        "draw volume not filed; DoseMath computes after confirm"
+      ]
+    }
+  },
+  {
+    "id": "R17",
+    "ramble": "scale said 89.4 kilograms after the shower",
+    "expected_kinds": [
+      "weightLogged"
+    ],
+    "expected_compounds": [],
+    "proposal": {
+      "events": [
+        {
+          "kind": "weightLogged",
+          "excerpt": "89.4 kilograms",
+          "payload": {
+            "kilograms": 89.4
+          }
+        }
+      ],
+      "gaps": []
+    }
+  },
+  {
+    "id": "R18",
+    "ramble": "headache and injection site itch on the right abdomen, mild",
+    "expected_kinds": [
+      "symptomLogged",
+      "symptomLogged"
+    ],
+    "expected_compounds": [],
+    "proposal": {
+      "events": [
+        {
+          "kind": "symptomLogged",
+          "excerpt": "headache",
+          "payload": {
+            "text": "headache",
+            "severity": "mild"
+          }
+        },
+        {
+          "kind": "symptomLogged",
+          "excerpt": "injection site itch on the right abdomen",
+          "payload": {
+            "text": "injection site itch, right abdomen",
+            "severity": "mild"
+          }
+        }
+      ],
+      "gaps": []
+    }
+  },
+  {
+    "id": "R19",
+    "ramble": "Ipamorelin 2 mg vial mixed 1 mL last Tuesday I think, still going",
+    "expected_kinds": [
+      "vialReconstituted"
+    ],
+    "expected_compounds": [
+      "Ipamorelin"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "vialReconstituted",
+          "excerpt": "Ipamorelin 2 mg vial mixed 1 mL last Tuesday",
+          "payload": {
+            "compoundName": "Ipamorelin",
+            "diluentVolume": {
+              "milliliters": 1
+            },
+            "labeledMass": {
+              "value": 2,
+              "unit": "mg"
+            }
+          }
+        }
+      ],
+      "gaps": [
+        "exact mix date, 'last Tuesday I think'"
+      ]
+    }
+  },
+  {
+    "id": "R20",
+    "ramble": "nothing today, just checking what is left in the BPC",
+    "expected_kinds": [],
+    "expected_compounds": [],
+    "proposal": {
+      "events": [],
+      "gaps": [
+        "inventory query, no new event; use inventory_remaining"
+      ]
+    }
+  },
+  {
+    "id": "R21",
+    "ramble": "drew 25 units on a U-100 of the reconstituted tirz, left love handle",
+    "expected_kinds": [
+      "doseLogged"
+    ],
+    "expected_compounds": [
+      "tirzepatide"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "doseLogged",
+          "excerpt": "25 units on a U-100 of the reconstituted tirz, left love handle",
+          "payload": {
+            "compoundName": "tirzepatide",
+            "syringeScale": "U-100",
+            "syringeUnits": 25,
+            "site": "left love handle"
+          }
+        }
+      ],
+      "gaps": [
+        "mass dose not stated; units are syringe marks"
+      ]
+    }
+  },
+  {
+    "id": "R22",
+    "ramble": "HCG 500 IU this morning, I am not giving you a conversion factor",
+    "expected_kinds": [
+      "doseLogged"
+    ],
+    "expected_compounds": [
+      "hCG"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "doseLogged",
+          "excerpt": "HCG 500 IU this morning",
+          "payload": {
+            "compoundName": "hCG",
+            "doseIU": {
+              "value": 500
+            },
+            "notes": "no IU-to-mass factor supplied"
+          }
+        }
+      ],
+      "gaps": [
+        "mass equivalent refused without a user-supplied factor"
+      ]
+    }
+  },
+  {
+    "id": "R23",
+    "ramble": "photo later but the new vial is sermorelin 5 mg exp march 2027 lot SR-441 freezer until mix",
+    "expected_kinds": [
+      "vialAdded"
+    ],
+    "expected_compounds": [
+      "sermorelin"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "vialAdded",
+          "excerpt": "sermorelin 5 mg exp march 2027 lot SR-441 freezer until mix",
+          "payload": {
+            "compoundName": "sermorelin",
+            "labeledMass": {
+              "value": 5,
+              "unit": "mg"
+            },
+            "lot": "SR-441",
+            "expiry": "March 2027",
+            "storageNote": "freezer until mix"
+          }
+        }
+      ],
+      "gaps": [
+        "photo not attached yet"
+      ]
+    }
+  },
+  {
+    "id": "R24",
+    "ramble": "took the weekly tirz 5 milligrams, wait no, 5 milligrams is the vial, the dose was 5 milligrams too actually that is the whole vial I think I messed up",
+    "expected_kinds": [
+      "doseLogged"
+    ],
+    "expected_compounds": [
+      "tirzepatide"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "doseLogged",
+          "excerpt": "dose was 5 milligrams too actually that is the whole vial",
+          "payload": {
+            "compoundName": "tirzepatide",
+            "doseMass": {
+              "value": 5,
+              "unit": "mg"
+            },
+            "notes": "user flagged possible whole-vial mixup"
+          }
+        }
+      ],
+      "gaps": [
+        "confirm whether 5 mg was vial mass or dose; DoseMath should flag dose_equals_entire_vial"
+      ]
+    }
+  },
+  {
+    "id": "R25",
+    "ramble": "blend vial, CJC and ipa already mixed together 2 mg plus 2 mg in 2 mL, I took 0.1 mL bedtime left shoulder",
+    "expected_kinds": [
+      "vialAdded",
+      "vialReconstituted",
+      "doseLogged"
+    ],
+    "expected_compounds": [
+      "CJC-1295 / Ipamorelin"
+    ],
+    "proposal": {
+      "events": [
+        {
+          "kind": "vialAdded",
+          "excerpt": "blend vial, CJC and ipa already mixed together 2 mg plus 2 mg",
+          "payload": {
+            "compoundName": "CJC-1295 / Ipamorelin",
+            "labeledMass": {
+              "value": 4,
+              "unit": "mg"
+            },
+            "notes": "blend, 2 mg + 2 mg"
+          }
+        },
+        {
+          "kind": "vialReconstituted",
+          "excerpt": "in 2 mL",
+          "payload": {
+            "compoundName": "CJC-1295 / Ipamorelin",
+            "diluentVolume": {
+              "milliliters": 2
+            }
+          }
+        },
+        {
+          "kind": "doseLogged",
+          "excerpt": "0.1 mL bedtime left shoulder",
+          "payload": {
+            "compoundName": "CJC-1295 / Ipamorelin",
+            "drawVolume": {
+              "milliliters": 0.1
+            },
+            "site": "left shoulder",
+            "notes": "bedtime"
+          }
+        }
+      ],
+      "gaps": [
+        "per-compound split of the 0.1 mL draw"
+      ]
+    }
+  }
+]

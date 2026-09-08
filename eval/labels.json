@@ -1,0 +1,72 @@
+[
+  {
+    "id": "L01",
+    "text": "BPC-157\n5 mg\nLot A19C4\nEXP 12/2027\nLyophilized",
+    "expect_compound": "BPC-157",
+    "expect_unit": "mg",
+    "expect_lot": "A19C4"
+  },
+  {
+    "id": "L02",
+    "text": "Tirzepatide 10mg\nBatch: TZ-8821\nExpires 2026-11-30",
+    "expect_compound": "Tirzepatide 10mg",
+    "expect_unit": "mg",
+    "expect_lot": "TZ-8821"
+  },
+  {
+    "id": "L03",
+    "text": "TB-500 10 mg lyophilized\nLOT TB500-09\nUse by 08/2028",
+    "expect_compound": "TB-500 10 mg lyophilized",
+    "expect_unit": "mg",
+    "expect_lot": "TB500-09"
+  },
+  {
+    "id": "L04",
+    "text": "Semaglutide 5 mg\nLot SMG-17\nBUD 03/15/2027",
+    "expect_compound": "Semaglutide 5 mg",
+    "expect_unit": "mg",
+    "expect_lot": "SMG-17"
+  },
+  {
+    "id": "L05",
+    "text": "Ipamorelin 2mg\nLot IPA-3\nEXP JAN 2027",
+    "expect_compound": "Ipamorelin 2mg",
+    "expect_unit": "mg",
+    "expect_lot": "IPA-3"
+  },
+  {
+    "id": "L06",
+    "text": "CJC-1295 no DAC 5 mg\nBatch CJC1295-44\nExp 09/2027",
+    "expect_compound": "CJC-1295 no DAC 5 mg",
+    "expect_unit": "mg",
+    "expect_lot": "CJC1295-44"
+  },
+  {
+    "id": "L07",
+    "text": "GHK-Cu 50 mg\nLot GHK50\nEXP 2028-01-01",
+    "expect_compound": "GHK-Cu 50 mg",
+    "expect_unit": "mg",
+    "expect_lot": "GHK50"
+  },
+  {
+    "id": "L08",
+    "text": "Sermorelin 5mg lyophilized powder\nLOT SR-441\nEXP 03/2027",
+    "expect_compound": "Sermorelin 5mg lyophilized powder",
+    "expect_unit": "mg",
+    "expect_lot": "SR-441"
+  },
+  {
+    "id": "L09",
+    "text": "hCG 5000 IU\nLot HCG-77\nEXP 06/2027",
+    "expect_compound": "hCG 5000 IU",
+    "expect_unit": "iu",
+    "expect_lot": "HCG-77"
+  },
+  {
+    "id": "L10",
+    "text": "Testosterone Cypionate 200 mg/mL\n10 mL vial\nLot TC-200-5\nEXP 11/2028",
+    "expect_compound": "Testosterone Cypionate 200 mg/mL",
+    "expect_unit": "mg",
+    "expect_lot": "TC-200-5"
+  }
+]
