@@ -3,6 +3,7 @@ import XCTest
 /// Drives the real user path with a canned provider: unlock, disclaimer, capture, confirm, ledger.
 /// Runs against the simulator only. The app is launched with `--ui-test-mock`, which swaps in
 /// `MockProvider`, a throwaway ledger directory, and skips Keychain. No network, no real key.
+@MainActor
 final class CaptureFlowUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
@@ -81,6 +82,7 @@ final class CaptureFlowUITests: XCTestCase {
 }
 
 private extension XCUIElement {
+    @MainActor
     func waitForEnabled(timeout: TimeInterval) -> Bool {
         let predicate = NSPredicate(format: "isEnabled == true")
         let expectation = XCTNSPredicateExpectation(predicate: predicate, object: self)
