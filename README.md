@@ -86,7 +86,7 @@ open PeptideLedger.xcodeproj
 Select the `PeptideLedger` scheme and an iPhone destination. Paste a
 model API key in onboarding. Do not commit keys.
 
-`./verify` runs `swift build`, `swift test` (31 tests), XcodeGen, and
+`./verify` runs `swift build`, `swift test` (32 tests), XcodeGen, and
 then, if an iPhone simulator runtime is installed, the XCUITest smoke test
 in `UITests/` on a booted simulator: onboarding gate, typed ramble,
 proposal card with gap list, confirm, row in the Ledger tab. It uses a

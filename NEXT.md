@@ -17,7 +17,7 @@ file.
   `MockProvider` answer matching eval fixture R01, throwaway ledger dir,
   Keychain skipped, lock skipped because LocalAuthentication is system UI.
 - `./verify` runs that UI test when an iPhone runtime exists, otherwise
-  falls back to an SDK-only build. Last full run: 31 unit tests, UI test
+  falls back to an SDK-only build. Last full run: 32 unit tests, UI test
   passed in 20 s, `verify passed`.
 - Docs listed in the README are real files, not stubs.
 
